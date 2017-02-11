@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -23,7 +24,9 @@ public class SAXParserActivity extends Activity implements
 
     Button button;
     Spinner spinner;
+    ListView listView;
     List<Employee> employees = null;
+    List<Bar> bars = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,13 +40,13 @@ public class SAXParserActivity extends Activity implements
     private void findViewsById() {
         button = (Button) findViewById(R.id.button);
         spinner = (Spinner) findViewById(R.id.spinner);
+        listView = (ListView) findViewById(R.id.listview);
     }
 
     public void onClick(View v) {
         try {
-            employees = SAXXMLParser.parse(getAssets().open("employees.xml"));
-            ArrayAdapter<Employee> adapter = new ArrayAdapter<Employee>(this,
-                    R.layout.list_item, employees);
+            bars = SAXXMLParser.parse(getAssets().open("bars.xml"));
+            ArrayAdapter<Bar> adapter = new ArrayAdapter<Bar>(this, R.layout.list_item, bars);
             spinner.setAdapter(adapter);
             spinner.setOnItemSelectedListener(this);
         } catch (IOException e) {
@@ -52,11 +55,9 @@ public class SAXParserActivity extends Activity implements
     }
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int pos,
-                               long id) {
-        Employee employee = (Employee) parent.getItemAtPosition(pos);
-        Toast.makeText(parent.getContext(), employee.getDetails(),
-                Toast.LENGTH_LONG).show();
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+        Bar bar = (Bar) parent.getItemAtPosition(pos);
+        Toast.makeText(parent.getContext(), bar.getBarDetails(), Toast.LENGTH_LONG).show();
     }
 
     @Override

@@ -13,16 +13,16 @@ import testapp.example.com.parsertest.*;
 
 public class SAXXMLHandler extends DefaultHandler {
 
-    private List<Employee> employees;
+    private List<Bar> bars;
     private String tempVal;
-    private Employee tempEmp;
+    private Bar tempEmp;
 
     public SAXXMLHandler() {
-        employees = new ArrayList<Employee>();
+        bars = new ArrayList<Bar>();
     }
 
-    public List<Employee> getEmployees() {
-        return employees;
+    public List<Bar> getBars() {
+        return bars;
     }
 
     // Event Handlers
@@ -30,9 +30,9 @@ public class SAXXMLHandler extends DefaultHandler {
                              Attributes attributes) throws SAXException {
         // reset
         tempVal = "";
-        if (qName.equalsIgnoreCase("employee")) {
+        if (qName.equalsIgnoreCase("bar")) {
             // create a new instance of employee
-            tempEmp = new Employee();
+            tempEmp = new Bar();
         }
     }
 
@@ -43,19 +43,29 @@ public class SAXXMLHandler extends DefaultHandler {
 
     public void endElement(String uri, String localName, String qName)
             throws SAXException {
-        if (qName.equalsIgnoreCase("employee")) {
+        if (qName.equalsIgnoreCase("bar")) {
             // add it to the list
-            employees.add(tempEmp);
+            bars.add(tempEmp);
         } else if (qName.equalsIgnoreCase("id")) {
             tempEmp.setId(Integer.parseInt(tempVal));
         } else if (qName.equalsIgnoreCase("name")) {
             tempEmp.setName(tempVal);
-        } else if (qName.equalsIgnoreCase("department")) {
-            tempEmp.setDepartment(tempVal);
-        } else if (qName.equalsIgnoreCase("type")) {
-            tempEmp.setType(tempVal);
-        } else if (qName.equalsIgnoreCase("email")) {
-            tempEmp.setEmail(tempVal);
         }
+         else if (qName.equalsIgnoreCase("description")) {
+            tempEmp.setDescription(tempVal);
+        }
+        else if (qName.equalsIgnoreCase("specialnights")) {
+            tempEmp.setSpecialNights(tempVal);
+        }
+        else if (qName.equalsIgnoreCase("openinghours")) {
+            tempEmp.setOpeningHours(tempVal);
+        }
+        else if (qName.equalsIgnoreCase("doorcharge")) {
+            tempEmp.setDoorCharge(tempVal);
+        }
+        else if (qName.equalsIgnoreCase("prices")) {
+            tempEmp.setPrices(tempVal);
+        }
+
     }
 }
