@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<bars>
+    <barInfo>
+        <name>Cafe Baba</name>
+        <description>A Moroccan themed cocktail bar at the very start of cowley’s busiest sector. This means it’s an excellent start to any bar crawl! It hosts a cosy beer garden and serves tapas to make your evening complete.</description>
+        <happyhour>2-4-1 cocktails from 5-8pm and two house beers for £5 or £4 cocktails from 8pm onwards</happyhour>
+        <openinghours>Everyday 5pm-1am</openinghours>
+        <prices>££/£££££</prices>
+        <address>240 Cowley Rd, Oxford OX4 1UH</address>
+        <telephone>01865 201212</telephone>
+    </barInfo>
+    <barInfo>
+        <name>Cafe Baba</name>
+        <description>A Moroccan themed cocktail bar at the very start of cowley’s busiest sector. This means it’s an excellent start to any bar crawl! It hosts a cosy beer garden and serves tapas to make your evening complete.</description>
+        <happyhour>2-4-1 cocktails from 5-8pm and two house beers for £5 or £4 cocktails from 8pm onwards</happyhour>
+        <openinghours>Everyday 5pm-1am</openinghours>
+        <prices>££/£££££</prices>
+        <address>240 Cowley Rd, Oxford OX4 1UH</address>
+        <telephone>01865 201212</telephone>
+    </barInfo>
+</bars>
