@@ -13,12 +13,11 @@ import testapp.example.com.parsertest.*;
 import android.util.Log;
 
 public class SAXXMLParser {
-    public static List<Bar> parse(InputStream is) {
+    public static List<Bar> parseBar(InputStream is) {
         List<Bar> bars = null;
         try {
             // create a XMLReader from SAXParser
-            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser()
-                    .getXMLReader();
+            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
             // create a SAXXMLHandler
             SAXXMLHandler saxHandler = new SAXXMLHandler();
             // store handler in XMLReader
@@ -34,5 +33,26 @@ public class SAXXMLParser {
 
         // return Employee list
         return bars;
+    }
+
+    public static List<Employee> parseEmp(InputStream is) {
+        List<Employee> employees = null;
+        try {
+            // create a XMLReader from SAXParser
+            XMLReader xmlReader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
+            // create a SAXXMLHandler
+            SAXXMLHandler saxHandler = new SAXXMLHandler();
+            // store handler in XMLReader
+            xmlReader.setContentHandler(saxHandler);
+            // the process starts
+            xmlReader.parse(new InputSource(is));
+            // get the `Employee list`
+            employees = saxHandler.getEmployees();
+
+        } catch (Exception ex) {
+            Log.d("XML", "SAXXMLParser: parse() failed");
+        }
+        // return Employee list
+        return employees;
     }
 }

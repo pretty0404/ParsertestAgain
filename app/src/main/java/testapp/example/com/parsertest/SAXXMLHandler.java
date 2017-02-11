@@ -14,57 +14,74 @@ import testapp.example.com.parsertest.*;
 public class SAXXMLHandler extends DefaultHandler {
 
     private List<Bar> bars;
-    private String tempVal;
-    private Bar tempEmp;
+    private List<Employee> employees;
 
-    public SAXXMLHandler() {
+    private String tempValBar;
+    private String tempValEmp;
+
+    private Bar tempBar;
+    private Employee tempEmp;
+
+    public SAXXMLHandler() {//constructor
         bars = new ArrayList<Bar>();
+        employees= new ArrayList<Employee>();
     }
 
     public List<Bar> getBars() {
         return bars;
     }
 
+    public List<Employee> getEmployees(){
+        return employees;
+    }
+
     // Event Handlers
-    public void startElement(String uri, String localName, String qName,
-                             Attributes attributes) throws SAXException {
+    public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
         // reset
-        tempVal = "";
+        tempValBar = "";
+        tempValEmp = "";
         if (qName.equalsIgnoreCase("bar")) {
-            // create a new instance of employee
-            tempEmp = new Bar();
+            // create a new instance of bar
+            tempBar = new Bar();
+        }
+        else if (qName.equalsIgnoreCase("employee")) {
+            // create a new instance of bar
+            tempEmp = new Employee();
         }
     }
 
-    public void characters(char[] ch, int start, int length)
-            throws SAXException {
-        tempVal = new String(ch, start, length);
+    public void characters(char[] ch, int start, int length) throws SAXException {
+        tempValBar = new String(ch, start, length);
+        tempValEmp = new String(ch, start, length);
     }
 
-    public void endElement(String uri, String localName, String qName)
-            throws SAXException {
+    public void endElement(String uri, String localName, String qName) throws SAXException {
         if (qName.equalsIgnoreCase("bar")) {
             // add it to the list
-            bars.add(tempEmp);
+            bars.add(tempBar);
+            employees.add(tempEmp);
+
         } else if (qName.equalsIgnoreCase("id")) {
-            tempEmp.setId(Integer.parseInt(tempVal));
-        } else if (qName.equalsIgnoreCase("name")) {
-            tempEmp.setName(tempVal);
+            tempEmp.setId(Integer.parseInt(tempValEmp));
+        }
+        else if (qName.equalsIgnoreCase("name")) {
+            tempEmp.setName(tempValEmp);
+            tempBar.setName(tempValBar);
         }
          else if (qName.equalsIgnoreCase("description")) {
-            tempEmp.setDescription(tempVal);
-        }
-        else if (qName.equalsIgnoreCase("specialnights")) {
-            tempEmp.setSpecialNights(tempVal);
+            tempBar.setDescription(tempValBar);
         }
         else if (qName.equalsIgnoreCase("openinghours")) {
-            tempEmp.setOpeningHours(tempVal);
-        }
-        else if (qName.equalsIgnoreCase("doorcharge")) {
-            tempEmp.setDoorCharge(tempVal);
+            tempBar.setOpeningHours(tempValBar);
         }
         else if (qName.equalsIgnoreCase("prices")) {
-            tempEmp.setPrices(tempVal);
+            tempBar.setPrices(tempValBar);
+        }
+        else if (qName.equalsIgnoreCase("department")) {
+            tempEmp.setDepartment(tempValEmp);
+        }
+        else if (qName.equalsIgnoreCase("type")) {
+            tempEmp.setType(tempValEmp);
         }
 
     }
