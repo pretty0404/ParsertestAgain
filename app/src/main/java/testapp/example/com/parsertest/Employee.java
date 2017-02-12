@@ -20,7 +20,6 @@ import java.util.List;
 
 public class Employee extends Activity implements AdapterView.OnItemSelectedListener {
 
-    Button buttonEmp;
     ListView listView;
 
     List<Employee> employees = null;
@@ -39,7 +38,6 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
     }
 
     private void findViewsById() {
-        buttonEmp = (Button) findViewById(R.id.buttonClickEmployees);
         listView = (ListView) findViewById(R.id.listviewEmployee);
     }
 
@@ -53,7 +51,6 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
             e.printStackTrace();
         }
     }
-
 
     public String getName() {
         return name;
@@ -86,7 +83,6 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
     public void setType(String type) {
         this.type = type;
     }
-
 
     @Override
     public String toString() {

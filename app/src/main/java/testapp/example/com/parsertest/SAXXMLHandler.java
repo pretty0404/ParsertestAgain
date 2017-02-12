@@ -59,28 +59,22 @@ public class SAXXMLHandler extends DefaultHandler {
         if (qName.equalsIgnoreCase("bar")) {
             // add it to the list
             bars.add(tempBar);
+        } else if (qName.equalsIgnoreCase("dmployee")) {
             employees.add(tempEmp);
-
         } else if (qName.equalsIgnoreCase("id")) {
             tempEmp.setId(Integer.parseInt(tempValEmp));
-        }
-        else if (qName.equalsIgnoreCase("name")) {
+        } else if (qName.equalsIgnoreCase("name")) {
             tempEmp.setName(tempValEmp);
             tempBar.setName(tempValBar);
-        }
-         else if (qName.equalsIgnoreCase("description")) {
+        } else if (qName.equalsIgnoreCase("description")) {
             tempBar.setDescription(tempValBar);
-        }
-        else if (qName.equalsIgnoreCase("openinghours")) {
+        } else if (qName.equalsIgnoreCase("openinghours")) {
             tempBar.setOpeningHours(tempValBar);
-        }
-        else if (qName.equalsIgnoreCase("prices")) {
+        } else if (qName.equalsIgnoreCase("prices")) {
             tempBar.setPrices(tempValBar);
-        }
-        else if (qName.equalsIgnoreCase("department")) {
+        } else if (qName.equalsIgnoreCase("department")) {
             tempEmp.setDepartment(tempValEmp);
-        }
-        else if (qName.equalsIgnoreCase("type")) {
+        } else if (qName.equalsIgnoreCase("type")) {
             tempEmp.setType(tempValEmp);
         }
 
