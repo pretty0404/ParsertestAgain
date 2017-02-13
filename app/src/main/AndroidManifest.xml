@@ -15,8 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Bar"></activity>
-        <activity android:name=".Employee"></activity>
+        <activity android:name=".Bar" />
+        <activity android:name=".Employee" />
+        <activity android:name=".employeeDetail"></activity>
     </application>
 
 </manifest>

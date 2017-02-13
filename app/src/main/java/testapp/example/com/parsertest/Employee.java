@@ -1,6 +1,7 @@
 package testapp.example.com.parsertest;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,7 +19,7 @@ import java.util.List;
 
 
 
-public class Employee extends Activity implements AdapterView.OnItemSelectedListener {
+public class Employee extends Activity implements AdapterView.OnItemClickListener {
 
     ListView listView;
 
@@ -46,7 +47,7 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
             employees = SAXXMLParser.parseEmp(getAssets().open("employees.xml"));
             ArrayAdapter<Employee> adapterEmp = new ArrayAdapter<Employee>(this, R.layout.list_item, employees);
             listView.setAdapter(adapterEmp);
-            listView.setOnItemSelectedListener(this);
+            listView.setOnItemClickListener(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -95,14 +96,23 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
     }
 
 
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+////on item click listener
+//        Intent intent = new Intent(Employee.this, employeeDetail.class);
+//        startActivity(intent);
+//    }
+
+//    @Override
+//    public void onNothingSelected(AdapterView<?> parent) {
+//
+//    }
+
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//on item click listener
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Employee emp = employees.get(position);
+        Intent intent = new Intent(Employee.this, employeeDetail.class);
+        intent.putExtra("name",emp.getName());
+        startActivity(intent);
     }
 }
