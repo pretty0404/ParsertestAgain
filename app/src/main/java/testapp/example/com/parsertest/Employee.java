@@ -43,7 +43,7 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
 
     public void display() {
         try {
-            employees = SAXXMLParser.parseEmp(getAssets().open("bars.xml"));
+            employees = SAXXMLParser.parseEmp(getAssets().open("employees.xml"));
             ArrayAdapter<Employee> adapterEmp = new ArrayAdapter<Employee>(this, R.layout.list_item, employees);
             listView.setAdapter(adapterEmp);
             listView.setOnItemSelectedListener(this);
@@ -97,6 +97,7 @@ public class Employee extends Activity implements AdapterView.OnItemSelectedList
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//on item click listener
 
     }
 
